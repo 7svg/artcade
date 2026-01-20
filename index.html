@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artcade - 2026</title>
+    <link rel="icon" href="artcade.png" type="image/x-icon">
+    <style>
+        :root {
+            --bg-color: #05050a;
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff00ff;
+            --glass-bg: rgba(15, 15, 25, 0.9);
+            --text-main: #e0e6ed;
+            --text-dim: #94a3b8;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--neon-cyan);
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1; /* Pushes footer down */
+        }
+
+        .section-box {
+            position: relative;
+            background: var(--glass-bg);
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            border-left: 4px solid var(--neon-pink);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            margin-top: 0;
+        }
+
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+        li::before {
+            content: ">>";
+            position: absolute;
+            left: 0;
+            color: var(--neon-pink);
+            font-family: monospace;
+        }
+
+        /* Robot Speech Bubble */
+        .robot-msg {
+            display: inline-block;
+            background: var(--glass-bg);
+            border: 1px solid var(--neon-cyan);
+            padding: 10px 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            color: var(--neon-cyan);
+            font-family: monospace;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+
+        .quiz-btn {
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 2px solid var(--neon-cyan);
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+            border-radius: 4px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .quiz-btn:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 30px var(--neon-cyan);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .section-box::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            border-style: solid;
+            border-width: 0 20px 20px 0;
+            border-color: transparent var(--neon-pink) transparent transparent;
+        }/* Container for the corner placement */
+/* This centers the button and provides a coordinate system for the robot */
+.quiz-anchor {
+    position: relative;
+    text-align: center;
+    margin: 80px auto 50px auto; /* Extra top margin to give robot space */
+    width: fit-content;
+}
+
+/* Position the robot relative to the button */
+.robot-wrapper {
+    position: absolute;
+    top: -140px;   /* Pulls it above the button */
+    right: -100px; /* Moves it to the right of the button */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none; /* Allows you to click the button underneath if they overlap */
+}
+
+.floating-robot {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 10px var(--neon-cyan));
+    animation: floatRobot 3s ease-in-out infinite;
+}
+
+@keyframes floatRobot {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.comic-bubble {
+    position: relative;
+    background: #fff;
+    color: #000;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 15px;
+    border: 3px solid #000;
+    max-width: 150px;
+    margin-bottom: 10px;
+    box-shadow: 4px 4px 0px var(--neon-pink);
+    font-size: 0.85rem;
+    line-height: 1.2;
+}
+
+/* The tail of the bubble pointing toward the robot */
+.comic-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 12px 10px 0;
+    border-style: solid;
+    border-color: #000 transparent transparent;
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AI can help or harm - You Decide.</h1>
+    <p style="color: var(--neon-pink); font-family: monospace;">eRaksha // YEAR: 2026</p>
+</header>
+
+<div class="container">
+    <section class="section-box">
+        <h2>01. Protect Your Private Info</h2>
+        <p>When you talk to an AI, think of it like a public forum. Most systems learn from what you tell them.</p>
+        <ul>
+            <li><strong>Don't share names:</strong> Use "Person A" instead of full real names.</li>
+            <li><strong>Keep IDs private:</strong> Never type in phone numbers, home addresses, or ID numbers.</li>
+            <li><strong>Hide work secrets:</strong> Do not paste private company documents or internal emails.</li>
+        </ul>
+    </section>
+
+    <section class="section-box">
+        <h2>02. Double-Check the Facts</h2>
+        <p>AI can sound very confident even when it is wrong. This is often called "hallucinating."</p>
+        <ul>
+            <li><strong>Verify with Search:</strong> If an AI gives you a date or a law, check it on a trusted website.</li>
+        </ul>
+    </section>
+
+    <section class="section-box">
+        <h2>03. Use AI for Content, Not Decisions</h2>
+        <p>AI is an assistant, not the boss. You should always make the final call.</p>
+    </section>
+
+    <section class="section-box">
+        <h2>04. Watch Out for Scams</h2>
+        <p>New technology makes it easy to fake voices and faces. This is called a "Deepfake."</p>
+    </section>
+
+<div class="quiz-anchor">
+    
+    <div class="robot-wrapper">
+        <div class="comic-bubble">
+            Lets test how much you have learned till now.
+        </div>
+        <div class="floating-robot">🤖</div>
+    </div>
+
+    <a href="quiz.html" style="text-decoration: none;">
+        <button class="quiz-btn">
+            BEGIN QUIZ
+        </button>
+    </a>
+</div>
+
+<footer>
+    &copy; Herat Kotecha | 2026
+</footer>
+
+</body>
+</html>

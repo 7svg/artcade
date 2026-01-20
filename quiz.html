@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artcade - 2026</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="artcade.png" type="image/x-icon">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <canvas id="particle-bg"></canvas>
+
+  <div id="color-overlay"></div>
+  <div id="reboot-flash"></div>
+
+  <div id="game-container">
+    <div class="hud">
+      <div id="status-tag">SYSTEM: STABLE</div>
+      <div>Score: <span id="score-val">0</span></div>
+    </div>
+
+    <div class="npc-area">
+      <div id="robot-container">🤖</div>
+      <div id="speech-bubble">Click On Initiate Mission To Start!</div>
+    </div>
+
+    <div class="screen active" id="start-screen">
+      <h1 class="glow-title">AI For Peace</h1>
+      <p class="subtext">Mission: Protect the AI's Core</p>
+      <button id="start-btn" class="main-btn">INITIATE MISSION</button>
+    </div>
+
+    <div class="screen" id="game-screen">
+      <div class="progress-bar-bg"><div id="progress-fill"></div></div>
+      <h2 id="question-title"></h2>
+      <p id="question-text"></p>
+      <div id="options-box"></div>
+    </div>
+
+    <div class="screen" id="end-screen">
+      <h1 id="end-title">MISSION OVER</h1>
+      <p id="end-desc"></p>
+      <h2 id="final-score"></h2>
+      <button id="reboot-btn" class="main-btn">REBOOT SYSTEM</button>
+    </div>
+  </div>
+
+  <audio id="sound-click" src="sounds/click.mp3" preload="auto"></audio>
+  <audio id="sound-correct" src="sounds/correct.mp3" preload="auto"></audio>
+  <audio id="sound-wrong" src="sounds/incorrect.mp3" preload="auto"></audio>
+  <audio id="sound-reboot" src="sounds/reboot.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+  <footer>
+    &copy; Herat Kotecha | 2026
+  </footer>
+</body>
+</html>
