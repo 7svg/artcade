@@ -271,10 +271,11 @@ createParticles();
 drawParticles();
 
 window.addEventListener('click', () => {
-  const sounds = [sClick, sCorrect, sWrong, sReboot];
+  const sounds = [Click, Correct, Wrong, Reboot];
   sounds.forEach(s => {
     try {
       s.play().then(() => s.pause());
     } catch (e) {}
   });
+
 }, { once: true });
